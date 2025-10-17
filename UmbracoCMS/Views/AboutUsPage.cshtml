@@ -1,0 +1,32 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<AboutUsPage>
+@{
+    Layout = "mainLayout.cshtml";
+}
+
+<section class="about-us relative py-[7rem] overflow-hidden">
+    <!-- Background Image -->
+    @if (Model.TeamImage != null)
+    {
+        <div class="absolute inset-0">
+            <img src="@Model.TeamImage.Url()" alt="@Model.TeamImage.Name"
+                 class="w-full h-full object-cover opacity-70" />
+        </div>
+    }
+
+    <!-- Overlay (optional for readability) -->
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <!-- Foreground Content -->
+    <div class="relative z-10 container mx-auto px-4">
+        <div class="w-full md:w-7/12 lg:w-5/12 flex flex-col gap-8 text-white">
+            <h1 class="text-[4.5rem] text-[#9e2335] font-bold leading-none">@Model.PageTitle</h1>
+            <div class="rte">@Html.Raw(Model.Introduction)</div>
+
+            <div class="mission mt-8">
+                <h2 class="text-3xl text-[#9e2335] font-semibold mb-2">Our Mission</h2>
+                <p class="text-lg">@Model.MissionStatement</p>
+            </div>
+        </div>
+    </div>
+</section>
